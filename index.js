@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://sarahsfuncars.vercel.app' // ✅ allow ONLY your frontend
+}));
 app.use(express.json());
 
 const questionRoutes = require('./routes/questions');
