@@ -23,5 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log('🚀 Backend running on http://localhost:5000');
+  console.log('🚀 Backend running on https://car-quiz-backend.onrender.com/api/questions?level=easy');
 });
+
+
