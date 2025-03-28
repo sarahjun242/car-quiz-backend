@@ -4,9 +4,17 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-  origin: 'https://sarahsfuncars.vercel.app' // ✅ allow ONLY your frontend
+  origin: '*',
 }));
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Allow everything temporarily for debugging
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 
 const questionRoutes = require('./routes/questions');
 const scoreRoutes = require('./routes/scores');
@@ -25,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log('🚀 Backend running on https://car-quiz-backend.onrender.com/api/questions?level=easy');
+  console.log('🚀 Backend running on http://localhost:5000');
 });
 
 
